@@ -1,0 +1,44 @@
+----- ENUNCIADO -----
+Hay que programar un carrito de compra de fruta.
+
+El cliente eligirá que fruta quiere haciendo click sobre la imagen.
+Un mensaje emergente le preguntará qué cantidad quiere.
+
+Esta información se mostrará a la derecha, bajo "Total carrito", en <p id="carrito"></p>, de esta forma: 
+
+Kiwi 2 kg x 4,20€/kg = 8,40 €
+
+El total se actualizará con cada compra
+ Total Compra: 8,40€
+ 
+Se dará la opción de añadir o no más productos que se mostrarán a continuación de los anteriores, y se sumará todo en el total. 
+Por ejemplo:  
+ Kiwi 2 kg x 4, 20€/kg = 8, 40€
+ Pomelo 1 kg x 2,50€/kg = 2,50€
+ Total Compra: 10,90€
+
+Puedes modificar el código facilitado si ello te ayuda con el ejercicio, pero deberás justificarlo.
+
+Recuerda la importancia comentar con detalle el código.
+
+Lo importante es el cálculo, no los estilos css
+
+----- NOTAS Y PROCEDIMIENTOS -----
+
+Datos
+	- Como no hay BBDD vamos a proceder a generar unos arrays que contengan la info, usaremos el indice del array como relación entre ellos (DONE)
+		- array listado frutas como id para manejar datos sin caracteres extraños
+		- array listado frutas como nombre de las frutas
+		- array listado importe unitario
+		- array listado tarifa por unidad y tipo
+
+	- Para empezar con el tema de los arrays se añaden id's a los div's para una mejor gestión de los datos (DONE)
+	- Una vez con los datos haremos que en el eventlistener click sobre el div nos abra un alert solicitando las cantidades
+	- Una vez tengamos los datos realizaremos los calculos
+	- Después de los calculos añadiremos los datos a un array
+	- Mostraremos los datos del array tal como se pide
+	- Despues realizaremos el calculo de los totales
+	- Ahora mostraremos el importe del total compra
+	
+Y vamos a ver si funciona....
+	

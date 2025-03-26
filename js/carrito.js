@@ -26,28 +26,54 @@ Recuerda la importancia comentar con detalle el código.
  Lo importante es el cálculo, no los estilos css
  */
 
-// Se añaden id's a Imagenes y parrafos para una mejor gestión de los artículos
-
-let frutas = document.getElementsByClassName("imatges")
-let pFrutas = document.querySelector('p').id
-
+// Sacamos los datos de nombre, importe y tarifa de venta
+// Obtenemos el listado en un array
+let lista = document.getElementsByClassName("productos")
+// let frutas = document.getElementsByClassName("imatges")
+// let importe = document.getElementsByClassName("imatges")
+// let tarifa = document.getElementsByClassName("imatges")
+//
+// console.log(lista)
+// console.log(frutas);
+// console.log(importe);
+// console.log(tarifa);
+// Inicializamos los arrays para llenar con los datos de "nombre de lista", "nombre de fruta", "importe de venta" y "tarifa de venta"
 let listaFrutas = []
-
-for (i = 0; i < frutas.length; i++) {
-    let nombreFruta = frutas[i].getAttribute("id")
-    console.log(nombreFruta);
-    listaFrutas.push(nombreFruta)
-    img.addEvenlistener('focusin',() => {
-        frutas[i]
-    })
+let nombreFrutas = []
+let importeFrutas = []
+let tarUnidFrutas = []
+// Recorremos el array y buscamos los datos, es mejorable la parte de buscar en los hijos
+for (i = 0; i < lista.length; i++) {
+    let listadoFrutas = lista[i].getAttribute("id")
+    let listadoNombresFrutas = lista[i].lastElementChild.textContent.split(":")[0]
+    let listadoImporteFrutas = lista[i].lastElementChild.textContent.split(":")[1].split("/")[0].trim()
+    let listadoTarifaFrutas = lista[i].lastElementChild.textContent.split(":")[1].split("/")[1].trim()
+    // console.log(listadoFrutas);
+    // console.log(listadoNombresFrutas);
+    // console.log(listadoImporteFrutas);
+    // console.log(listadoTarifaFrutas);
+    // Una vez que tenemos los datos los insertamos en los arrays correspondientes
+    listaFrutas.push(listadoFrutas)
+    nombreFrutas.push(listadoNombresFrutas)
+    importeFrutas.push(listadoImporteFrutas)
+    tarUnidFrutas.push(listadoTarifaFrutas)
 }
 
 console.log(listaFrutas);
+console.log(nombreFrutas);
+console.log(importeFrutas);
+console.log(tarUnidFrutas);
 
-
-
-
-
-//  div.addEventListener("click", () => {
-//     div.innerHTML = "<h2>Soy un h2 nuevo</h2>"
-// })
+//for (i = 0; i < lista.length; i++) {
+    // console.log(listaFrutas[i]);
+    lista[0].addEventListener("click", () => {
+        // let frutaSeleccionada = lista[i]
+        let frutaElegida = nombreFrutas[0] //lista[0].lastElementChild.textContent.split(":")[0]
+        console.log(lista[0]);
+        console.log(listaFrutas[0]);
+        console.log(frutaElegida);
+        console.log(importeFrutas[0]);
+        console.log(tarUnidFrutas[0]);
+        //alert(`Eres ${frutaElegida} `)
+    })
+//}
