@@ -29,10 +29,23 @@ Recuerda la importancia comentar con detalle el código.
 // Se añaden id's a Imagenes y parrafos para una mejor gestión de los artículos
 
 let frutas = document.getElementsByClassName("imatges")
+let pFrutas = document.querySelector('p').id
+
+let listaFrutas = []
 
 for (i = 0; i < frutas.length; i++) {
-    console.log(frutas[i]);
+    let nombreFruta = frutas[i].getAttribute("id")
+    console.log(nombreFruta);
+    listaFrutas.push(nombreFruta)
+    img.addEvenlistener('focusin',() => {
+        frutas[i]
+    })
 }
+
+console.log(listaFrutas);
+
+
+
 
 
 //  div.addEventListener("click", () => {
