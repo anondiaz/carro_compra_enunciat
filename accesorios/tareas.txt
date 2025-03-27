@@ -34,11 +34,15 @@ Datos
 
 	- Para empezar con el tema de los arrays se añaden id's a los div's para una mejor gestión de los datos (DONE)
 	- Una vez con los datos haremos que en el eventlistener click sobre el div nos abra un alert solicitando las cantidades
-	- Una vez tengamos los datos realizaremos los calculos
-	- Después de los calculos añadiremos los datos a un array
-	- Mostraremos los datos del array tal como se pide
-	- Despues realizaremos el calculo de los totales
-	- Ahora mostraremos el importe del total compra
+	- Debemos hacer una función a la cual le metamos la fruta y nos devuelva todos los datos
+		- Una vez tengamos los datos realizaremos los calculos
+		- Después de los calculos añadiremos los datos a un array
+		- Mostraremos los datos del array tal como se pide
+		- Despues realizaremos el calculo de los totales
+		- Ahora mostraremos el importe del total compra
+	- Esta funcion nos debe devolver los datos que meteremos en un array, dicho array tendrá otro array dentro por cada fruta del carro
+	- Una vez tengamos llenos este array ya podemos mostrarlo en el carrito
+	- Después podemos mostrar el total del importe en "Total"
 	
 Y vamos a ver si funciona....
 	

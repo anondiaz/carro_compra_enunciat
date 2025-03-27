@@ -45,8 +45,9 @@ let tarUnidFrutas = []
 // Recorremos el array y buscamos los datos, es mejorable la parte de buscar en los hijos
 for (i = 0; i < lista.length; i++) {
     let listadoFrutas = lista[i].getAttribute("id")
-    let listadoNombresFrutas = lista[i].lastElementChild.textContent.split(":")[0]
-    let listadoImporteFrutas = lista[i].lastElementChild.textContent.split(":")[1].split("/")[0].trim()
+    let listadoNombresFrutas = lista[i].lastElementChild.textContent.split(":")[0].trim()
+    // let listadoNombresFrutas = lista[i].innerHTML
+    let listadoImporteFrutas = lista[i].lastElementChild.textContent.split(":")[1].split("/")[0].split("€")[0].replace(",", ".").trim()
     let listadoTarifaFrutas = lista[i].lastElementChild.textContent.split(":")[1].split("/")[1].trim()
     // console.log(listadoFrutas);
     // console.log(listadoNombresFrutas);
@@ -59,21 +60,50 @@ for (i = 0; i < lista.length; i++) {
     tarUnidFrutas.push(listadoTarifaFrutas)
 }
 
-console.log(listaFrutas);
-console.log(nombreFrutas);
-console.log(importeFrutas);
-console.log(tarUnidFrutas);
+let frutaElegida = lista
 
-//for (i = 0; i < lista.length; i++) {
-    // console.log(listaFrutas[i]);
-    lista[0].addEventListener("click", () => {
-        // let frutaSeleccionada = lista[i]
-        let frutaElegida = nombreFrutas[0] //lista[0].lastElementChild.textContent.split(":")[0]
-        console.log(lista[0]);
-        console.log(listaFrutas[0]);
-        console.log(frutaElegida);
-        console.log(importeFrutas[0]);
-        console.log(tarUnidFrutas[0]);
-        //alert(`Eres ${frutaElegida} `)
-    })
-//}
+frutaElegida.addEventListener('click', () => {
+    for (i = 0; i < lista.length; i++) {
+    frutaElegida = lista[i]
+    
+    }
+    
+})
+
+console.log(frutaElegida);
+
+// // console.log(listaFrutas);
+// // console.log(nombreFrutas);
+// // console.log(importeFrutas);
+// // console.log(tarUnidFrutas);
+// // Recorremos el array y en el click seleccionamos la fruta y lanzamos un alert preguntando la cantidad del tipo de fruta que se desea
+// let calculoImporte = 0
+// let cantidadFruta = 0
+// let carritoFinal = []
+// let datosCarrito = []
+// for (i = 0; i < lista.length; i++) {
+//     let frutaLista = listaFrutas[i]
+//     let frutaElegNom = nombreFrutas[i]
+//     let frutaElegImp = importeFrutas[i]
+//     let frutaElegTar = tarUnidFrutas[i]
+//     lista[i].addEventListener("click", () => {
+//         cantidadFruta = prompt(`Has seleccionado el ${frutaElegNom} y cuesta ${frutaElegImp}€/${frutaElegTar}\n ¿Qué cantidad de ${frutaElegNom} quieres?`)
+//         calculoImporte = frutaElegImp * cantidadFruta
+//         datosCarrito.push(frutaLista)
+//         datosCarrito.push(frutaElegNom)
+//         datosCarrito.push(frutaElegImp)
+//         datosCarrito.push(cantidadFruta)
+//         datosCarrito.push(calculoImporte)
+//         // alert(`Has elegido ${cantidadFruta} de ${frutaElegNom} que son : ${calculoImporte}`)
+//         console.log(datosCarrito);
+//         carritoFinal.push(datosCarrito)
+//         datosCarrito = []
+//     })
+// }
+// console.log(carritoFinal);
+
+// for (i = 0; i < carritoFinal.length ; i++) {
+// console.log(carritoFinal[i]);
+// document.getElementById('carrito').innerHTML = '<p>Hola</p>'
+
+// }
