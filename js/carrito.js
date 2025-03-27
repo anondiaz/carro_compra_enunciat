@@ -71,14 +71,15 @@ for (i = 0; i < lista.length; i++) {
 // Recorremos el array y en el click seleccionamos la fruta y lanzamos un alert preguntando la cantidad del tipo de fruta que se desea
 let cantidadFruta = 0
 let calculoImporte = 0
-let datosCarrito = []
 let carritoFinal = []
     for (i = 0; i < lista.length; i++) {
         let frutaElegNom = datosFrutas[i].nombre
         let frutaElegImp = datosFrutas[i].importe
         let frutaElegTar = datosFrutas[i].unidad
-       
+        let datosCarrito = []
+        
         lista[i].addEventListener("click", () => {
+            // datosCarrito = []
             cantidadFruta = prompt(`Has seleccionado el ${frutaElegNom} y cuesta ${frutaElegImp}€/${frutaElegTar}\n ¿Qué cantidad de ${frutaElegNom} quieres?`)
             // calculoImporte = frutaElegImp * cantidadFruta
             // console.log(frutaElegNom)
@@ -86,6 +87,7 @@ let carritoFinal = []
             // console.log(calculoImporte)
             if(!isNaN(cantidadFruta) && cantidadFruta != null && cantidadFruta != ""){
                 calculoImporte = frutaElegImp * cantidadFruta
+                
                 datosCarrito.push(frutaElegNom)
                 datosCarrito.push(cantidadFruta)
                 datosCarrito.push(calculoImporte)
@@ -93,12 +95,14 @@ let carritoFinal = []
             }else{
                 alert('¿No has puesto una cantidad correcta!');
             }
+            
         })
         carritoFinal.push(datosCarrito)
+       
         // return datosCarrito
         // break
     }
-
+    
     console.log(carritoFinal);
 // }
 
