@@ -90,12 +90,11 @@ let carritoFinal = []
                 datosCarrito.push(cantidadFruta)
                 datosCarrito.push(calculoImporte)
                 document.getElementById('carrito').innerHTML = `<p>frutaElegNom frutaElegImp€/frutaElegTar</p>`
-                
             }else{
                 alert('¿No has puesto una cantidad correcta!');
             }
         })
-carritoFinal.push(datosCarrito)
+        carritoFinal.push(datosCarrito)
         // return datosCarrito
         // break
     }
