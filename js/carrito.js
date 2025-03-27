@@ -27,80 +27,91 @@ Recuerda la importancia comentar con detalle el código.
  */
 
 // Sacamos los datos de nombre, importe y tarifa de venta
-// Obtenemos el listado en un array
+// Obtenemos el listado de div's en un array, 
+// así luego podremos recorrer el contenido 
+// o detectar que hemos seleccionado el div completo
 let lista = document.getElementsByClassName("productos")
-// let frutas = document.getElementsByClassName("imatges")
-// let importe = document.getElementsByClassName("imatges")
-// let tarifa = document.getElementsByClassName("imatges")
-//
 // console.log(lista)
-// console.log(frutas);
-// console.log(importe);
-// console.log(tarifa);
-// Inicializamos los arrays para llenar con los datos de "nombre de lista", "nombre de fruta", "importe de venta" y "tarifa de venta"
-let listaFrutas = []
-let nombreFrutas = []
-let importeFrutas = []
-let tarUnidFrutas = []
-// Recorremos el array y buscamos los datos, es mejorable la parte de buscar en los hijos
+
+// Inicializamos el arrays para llenar con los datos de las frutas, 
+//utilizaremos objetos
+let datosFrutas = []
+
+// Recorremos el array y buscamos los datos, ha costado, 
+// pero al final lo saco con innerHTML 
+// en el getElementsByTagName("p")[0] saco el primer <p> , 
+// que solo hay uno, pero si no se lo indicas no lo puedes sacar igual que en los split !!!
 for (i = 0; i < lista.length; i++) {
-    let listadoFrutas = lista[i].getAttribute("id")
-    let listadoNombresFrutas = lista[i].lastElementChild.textContent.split(":")[0].trim()
-    // let listadoNombresFrutas = lista[i].innerHTML
-    let listadoImporteFrutas = lista[i].lastElementChild.textContent.split(":")[1].split("/")[0].split("€")[0].replace(",", ".").trim()
-    let listadoTarifaFrutas = lista[i].lastElementChild.textContent.split(":")[1].split("/")[1].trim()
-    // console.log(listadoFrutas);
-    // console.log(listadoNombresFrutas);
-    // console.log(listadoImporteFrutas);
-    // console.log(listadoTarifaFrutas);
-    // Una vez que tenemos los datos los insertamos en los arrays correspondientes
-    listaFrutas.push(listadoFrutas)
-    nombreFrutas.push(listadoNombresFrutas)
-    importeFrutas.push(listadoImporteFrutas)
-    tarUnidFrutas.push(listadoTarifaFrutas)
+    let listadoNombresFrutas = lista[i].getElementsByTagName("p")[0].innerHTML.split(":")[0].trim()
+    let listadoImporteFrutas = lista[i].getElementsByTagName("p")[0].innerHTML.split(":")[1].split("/")[0].split("€")[0].replace(",", ".").trim()
+    let listadoUnidadFrutas = lista[i].getElementsByTagName("p")[0].innerHTML.split(":")[1].split("/")[1].trim()
+    
+    // Creo el objetoFrutas para llenarlo, tal como ha dicho Ferran
+    let objetoFrutas = {}
+    // console.log(i) // para ver el id y con los de abajo veo los datos extraidos de los parrafos
+    // console.log(listadoNombresFrutas)
+    // console.log(listadoImporteFrutas)
+    // console.log(listadoUnidadFrutas)
+
+    // Una vez que tenemos los datos los insertamos en cada objeto dentro del array
+    objetoFrutas["nombre"] = listadoNombresFrutas
+    objetoFrutas["importe"] = listadoImporteFrutas
+    objetoFrutas["unidad"] = listadoUnidadFrutas
+    // console.log(objetoFrutas)
+
+    // Meto cada objeto en el array
+    datosFrutas.push(objetoFrutas)
 }
+// console.log(datosFrutas)
 
-let frutaElegida = lista
 
-frutaElegida.addEventListener('click', () => {
+//Vamos a ver si saco la función que me retorne el id del articulo seleccionado con el click
+
+// function frutaComprada (lista) {
+// Recorremos el array y en el click seleccionamos la fruta y lanzamos un alert preguntando la cantidad del tipo de fruta que se desea
+let cantidadFruta = 0
+let calculoImporte = 0
+let datosCarrito = []
+let carritoFinal = []
     for (i = 0; i < lista.length; i++) {
-    frutaElegida = lista[i]
-    
+        let frutaElegNom = datosFrutas[i].nombre
+        let frutaElegImp = datosFrutas[i].importe
+        let frutaElegTar = datosFrutas[i].unidad
+       
+        lista[i].addEventListener("click", () => {
+            cantidadFruta = prompt(`Has seleccionado el ${frutaElegNom} y cuesta ${frutaElegImp}€/${frutaElegTar}\n ¿Qué cantidad de ${frutaElegNom} quieres?`)
+            // calculoImporte = frutaElegImp * cantidadFruta
+            // console.log(frutaElegNom)
+            // console.log(cantidadFruta)
+            // console.log(calculoImporte)
+            if(!isNaN(cantidadFruta) && cantidadFruta != null && cantidadFruta != ""){
+                calculoImporte = frutaElegImp * cantidadFruta
+                datosCarrito.push(frutaElegNom)
+                datosCarrito.push(cantidadFruta)
+                datosCarrito.push(calculoImporte)
+                document.getElementById('carrito').innerHTML = `<p>frutaElegNom frutaElegImp€/frutaElegTar</p>`
+                
+            }else{
+                alert('¿No has puesto una cantidad correcta!');
+            }
+        })
+carritoFinal.push(datosCarrito)
+        // return datosCarrito
+        // break
     }
-    
-})
 
-console.log(frutaElegida);
-
-// // console.log(listaFrutas);
-// // console.log(nombreFrutas);
-// // console.log(importeFrutas);
-// // console.log(tarUnidFrutas);
-// // Recorremos el array y en el click seleccionamos la fruta y lanzamos un alert preguntando la cantidad del tipo de fruta que se desea
-// let calculoImporte = 0
-// let cantidadFruta = 0
-// let carritoFinal = []
-// let datosCarrito = []
-// for (i = 0; i < lista.length; i++) {
-//     let frutaLista = listaFrutas[i]
-//     let frutaElegNom = nombreFrutas[i]
-//     let frutaElegImp = importeFrutas[i]
-//     let frutaElegTar = tarUnidFrutas[i]
-//     lista[i].addEventListener("click", () => {
-//         cantidadFruta = prompt(`Has seleccionado el ${frutaElegNom} y cuesta ${frutaElegImp}€/${frutaElegTar}\n ¿Qué cantidad de ${frutaElegNom} quieres?`)
-//         calculoImporte = frutaElegImp * cantidadFruta
-//         datosCarrito.push(frutaLista)
-//         datosCarrito.push(frutaElegNom)
-//         datosCarrito.push(frutaElegImp)
-//         datosCarrito.push(cantidadFruta)
-//         datosCarrito.push(calculoImporte)
-//         // alert(`Has elegido ${cantidadFruta} de ${frutaElegNom} que son : ${calculoImporte}`)
-//         console.log(datosCarrito);
-//         carritoFinal.push(datosCarrito)
-//         datosCarrito = []
-//     })
+    console.log(carritoFinal);
 // }
-// console.log(carritoFinal);
+
+// document.addEventListener("click", () => {
+//     alert(`Has hecho click`)
+// })
+
+
+
+// let lista2 = frutaComprada(lista)
+// let lista3 = frutaComprada(lista)
+// console.log(lista2, lista3)
 
 // for (i = 0; i < carritoFinal.length ; i++) {
 // console.log(carritoFinal[i]);
