@@ -46,3 +46,19 @@ Datos
 	
 Y vamos a ver si funciona....
 	
+----- Al final toca reestructurar -----
+
+El eventlistener click no es el procedimiento correcto, en este caso hay que poner un onclick en los div's
+
+Valoraremos lo de recuperar los datos y montar el array primero
+
+Podemos añadir el onclick en cada div desde javascript, quizá sea menos laborioso
+
+Necesitamos una función que al detectar el onclick "nos recupere los datos y genere el objetocompra{}" y nos lance el prompt para saber la cantidad
+
+Esto debe añadir en el array un campo donde se guarde la cantidad o llenar el array, valoraremos
+
+Una vez que ya tengamos la listaCompra[{}{}] necesitaremos una funcion que nos la muestre en el div lateral, además debe actualizar el importe total
+
+Para borrar elementos deberiamos crear otra función que nos borre el indice con splice(indice, x) tambien nos deberia volver a lanzar la función mostrarCompra(){}
+
