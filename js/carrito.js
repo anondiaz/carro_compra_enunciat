@@ -27,3 +27,27 @@ Recuerda la importancia comentar con detalle el código.
  */
 
 // Vamos a empezar de 0
+
+// Voy a poner los atributos desde aquí para tocar el html lo minimo
+// Sacamos el listado de <div> de las frutas, que es el elemento que tiene el hover
+let lista = document.getElementById("productes")
+// console.log(lista);
+// Dándole vueltas a la cosa...
+let divProductos = lista.querySelectorAll("div")
+// console.log(divProductos);
+// Les añadimos la clase producto y el onclick, que llamará a la función para añadirlos al array del carrito, 
+// tambien hemos podido sacar los datos de los <p> para pasar los argumentos a la función, así ya lo tyenemos todo
+// de esta forma la construcción del objeta será más facil...
+for (i = 0; i < divProductos.length; i++) {
+    // Añadimos la clase
+    divProductos[i].classList.add("producto")
+    //Sacamos los datos de las frutas
+    let nombreFrutaSel = divProductos[i].getElementsByTagName("p")[0].innerHTML.split(":")[0].trim()
+    let importeFrutaSel = parseFloat(divProductos[i].getElementsByTagName("p")[0].innerHTML.split(":")[1].split("/")[0].split("€")[0].replace(",", ".").trim())
+    let unidadFrutaSel = divProductos[i].getElementsByTagName("p")[0].innerHTML.split(":")[1].split("/")[1].trim()
+    // console.log(nombreFrutaSel);
+    // console.log(importeFrutaSel);
+    // console.log(unidadFrutaSel);
+    // Montamos el onclick y llamamos a la función con los argumentos
+    divProductos[i].setAttribute("onclick", `productoSeleccionado("${nombreFrutaSel}", ${importeFrutaSel}, "${unidadFrutaSel}")`)
+}
