@@ -28,6 +28,9 @@ Recuerda la importancia comentar con detalle el código.
 
 // Vamos a empezar de 0
 
+// Inicializamos el array del carrito, quizá me queda más claro así
+let carritoFrutasSeleccionadas = []
+
 // Voy a poner los atributos desde aquí para tocar el html lo minimo
 // Sacamos el listado de <div> de las frutas, que es el elemento que tiene el hover
 let lista = document.getElementById("productes")
@@ -50,4 +53,39 @@ for (i = 0; i < divProductos.length; i++) {
     // console.log(unidadFrutaSel);
     // Montamos el onclick y llamamos a la función con los argumentos
     divProductos[i].setAttribute("onclick", `productoSeleccionado("${nombreFrutaSel}", ${importeFrutaSel}, "${unidadFrutaSel}")`)
+}
+
+// Hacemos la función que lee el evento de onclick
+function productoSeleccionado(nombreFrutaSel, importeFrutaSel, unidadFrutaSel) {
+    // Lanzamos el prompt para que el usuario introduzca un número
+    let cantidadFrutaSel = prompt(`Has seleccionado ${nombreFrutaSel} y cuesta ${importeFrutaSel}€/${unidadFrutaSel}\n ¿Qué cantidad de ${nombreFrutaSel} quieres?`)
+    cantidadFrutaSel = parseFloat(cantidadFrutaSel)
+    // Comprobaciones varias de los resultados
+    // let calculoImporte = importeFrutaSel * cantidadFrutaSel
+    // console.log(nombreFrutaSel);
+    // console.log(importeFrutaSel);
+    // console.log(unidadFrutaSel);
+    // console.log(cantidadFrutaSel);
+    // console.log(calculoImporte);
+    // Comprobamos que realmente nos pongan un número, por lo menos hasta donde yo sé y he podido averiguar
+    if(!isNaN(cantidadFrutaSel) && cantidadFrutaSel != "" && cantidadFrutaSel != null){
+        calculoImporte = importeFrutaSel * cantidadFrutaSel
+        // Creamos un objeto con la información que queremos guardar    
+        let objetoFrutaSel = {
+            nombref: nombreFrutaSel,
+            importef: importeFrutaSel,
+            unidadf: unidadFrutaSel,
+            cantidadc: cantidadFrutaSel,
+            importec: calculoImporte
+            }
+        // console.log(objetoFrutaSel);
+        // Añadimos este objeto al array "carritoFrutasSeleccionadas"
+        carritoFrutasSeleccionadas.push(objetoFrutaSel)
+    }else{
+        // En caso de que no pongan un dato valido, lanzamos una mensaje de alerta
+        alert('¿No has puesto una cantidad correcta!')
+    }
+    // Comprobamos para verificar que se añaden los datos
+    // console.log(carritoFrutasSeleccionadas)
+    mostrarCompra()
 }
