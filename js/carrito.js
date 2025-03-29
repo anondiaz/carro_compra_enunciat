@@ -55,7 +55,7 @@ for (i = 0; i < divProductos.length; i++) {
     divProductos[i].setAttribute("onclick", `productoSeleccionado("${nombreFrutaSel}", ${importeFrutaSel}, "${unidadFrutaSel}")`)
 }
 
-// Hacemos la función que lee el evento de onclick
+// Hacemos la función que lee el evento del onclick de los <div> de las frutas
 function productoSeleccionado(nombreFrutaSel, importeFrutaSel, unidadFrutaSel) {
     // Lanzamos el prompt para que el usuario introduzca un número
     let cantidadFrutaSel = prompt(`Has seleccionado ${nombreFrutaSel} y cuesta ${importeFrutaSel}€/${unidadFrutaSel}\n ¿Qué cantidad de ${nombreFrutaSel} quieres?`)
@@ -112,4 +112,13 @@ function mostrarCompra() {
     });
 	// Modificamos el valor del total de la compra, sacando el valor de la variable
     document.getElementById("preuFinal").textContent = totalCompra.toFixed(2) + "€";
+}
+
+// Con esta función borraremos el articulo y llamando a la función anterior mostrarCompra recargaremos la lista, así la mantenemos actualizada
+function eliminarFruta(indice) {
+    // Eliminamos el producto del array usando "splice", pasamos el numero de indice que obtenemos del onclick de la papelera
+    // la cantidad la ponemos fija ya que solo podremos seleccionar una cada vez
+    carritoFrutasSeleccionadas.splice(indice, 1)
+    // Volvemos a pintar el carrito para ver la actualización
+    mostrarCompra()
 }
