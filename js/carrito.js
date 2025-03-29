@@ -91,7 +91,7 @@ function productoSeleccionado(nombreFrutaSel, importeFrutaSel, unidadFrutaSel) {
     mostrarCompra()
 }
 
-// Esta es la función que nos permite mostrar y actualizar el carrito
+// Esta es la función que nos permite mostrar y actualizar el carrito y los precios
 function mostrarCompra() {
     // Seleccionamos el elemento <div> con id carrito
     let carritoCompra = document.getElementById("carrito")
@@ -119,6 +119,6 @@ function eliminarFruta(indice) {
     // Eliminamos el producto del array usando "splice", pasamos el numero de indice que obtenemos del onclick de la papelera
     // la cantidad la ponemos fija ya que solo podremos seleccionar una cada vez
     carritoFrutasSeleccionadas.splice(indice, 1)
-    // Volvemos a pintar el carrito para ver la actualización
+    // Volvemos a recargar el carrito con la función de mostrarCompra para ver la actualización en la pantalla
     mostrarCompra()
 }
