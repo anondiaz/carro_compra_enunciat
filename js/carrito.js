@@ -31,7 +31,7 @@ Recuerda la importancia comentar con detalle el código.
 // Inicializamos el array del carrito, quizá me queda más claro así
 let carritoFrutasSeleccionadas = []
 
-// Voy a poner los atributos desde aquí para tocar el html lo minimo
+// Voy a poner los atributos desde aquí para tocar el html lo mínimo
 // Sacamos el listado de <div> de las frutas, que es el elemento que tiene el hover
 let lista = document.getElementById("productes")
 // console.log(lista);
@@ -39,10 +39,10 @@ let lista = document.getElementById("productes")
 let divProductos = lista.querySelectorAll("div")
 // console.log(divProductos);
 // Les añadimos la clase producto y el onclick, que llamará a la función para añadirlos al array del carrito, 
-// tambien hemos podido sacar los datos de los <p> para pasar los argumentos a la función, así ya lo tyenemos todo
-// de esta forma la construcción del objeta será más facil...
+// tambien hemos podido sacar los datos de los <p> para pasar los argumentos a la función, así ya lo tenemos todo
+// de esta forma la construcción del objeto será más facil...
 for (i = 0; i < divProductos.length; i++) {
-    // Añadimos la clase
+    // Añadimos la clase a los div
     divProductos[i].classList.add("producto")
     //Sacamos los datos de las frutas
     let nombreFrutaSel = divProductos[i].getElementsByTagName("p")[0].innerHTML.split(":")[0].trim()
@@ -83,9 +83,33 @@ function productoSeleccionado(nombreFrutaSel, importeFrutaSel, unidadFrutaSel) {
         carritoFrutasSeleccionadas.push(objetoFrutaSel)
     }else{
         // En caso de que no pongan un dato valido, lanzamos una mensaje de alerta
-        alert('¿No has puesto una cantidad correcta!')
+        alert('¡No has puesto una cantidad correcta!')
     }
     // Comprobamos para verificar que se añaden los datos
     // console.log(carritoFrutasSeleccionadas)
+    // Llamamos a la función que muetsra los articulos en pantalla para refrescar los datos
     mostrarCompra()
+}
+
+// Esta es la función que nos permite mostrar y actualizar el carrito
+function mostrarCompra() {
+    // Seleccionamos el elemento <div> con id carrito
+    let carritoCompra = document.getElementById("carrito")
+    // Vaciamos el carrito para evitar que salgan compras antiguas
+    carritoCompra.innerHTML = ""
+    // Creamos la variable del total de la compra para mostrarla
+    let totalCompra = 0
+    // Recorremos el array del carritoFrutasSeleccionadas que nos devuelve la función de compra
+    carritoFrutasSeleccionadas.forEach((articulo, indiceCarrito) => {
+        // Vamos sumando importes de compra
+        totalCompra += articulo.importec
+        // console.log(totalCompra);
+        // Mostramos el precio y el total con 2 decimales, como es habitual, ya que los Float pueden tener muchos decimales
+        // Añadimos unos parrafos y la papelera en rojo como en el modelo 
+		carritoCompra.innerHTML += `<p><i id="borrar" class="fas fa-trash" onclick="eliminarFruta(${indiceCarrito})" ></i> ${articulo.nombref}: ${articulo.importef.toFixed(2)}€ x ${articulo.cantidadc} ${articulo.unidadf}  = ${articulo.importec.toFixed(2)}€</p>`
+		// Comprobamos lo que nos muestra carritoCompra
+		// console.log(carritoCompra);
+    });
+	// Modificamos el valor del total de la compra, sacando el valor de la variable
+    document.getElementById("preuFinal").textContent = totalCompra.toFixed(2) + "€";
 }
